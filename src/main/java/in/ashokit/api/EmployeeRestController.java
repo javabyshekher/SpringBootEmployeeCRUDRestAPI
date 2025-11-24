@@ -22,7 +22,7 @@ public class EmployeeRestController {
     //           produce and send it back to the client in the response body
 
     @GetMapping(value = "/employee/{id}",
-                produces = {"application/xml", "application/json"})
+                produces = { "application/json"})
     public ResponseEntity<Employee> getEmployee(@PathVariable Integer id) {
         Employee e = service.fetchById(id);
         if (e != null) {
@@ -34,7 +34,7 @@ public class EmployeeRestController {
     }
 
     @GetMapping(value = "/employees",
-                produces = {"application/json", "application/xml"} )
+                produces = {"application/json"} )
     public ResponseEntity<List<Employee>> getAllEmployees() {
         List<Employee> list = service.fetchAll();
         return new ResponseEntity<>(list, HttpStatus.OK);
@@ -43,8 +43,8 @@ public class EmployeeRestController {
     //consumes :  defines the media type that the method can
     //            consume from the client in the request body
     @PostMapping(value = "/save",
-                 consumes = {"application/json", "application/xml"},
-                 produces = {"application/json", "application/xml"})
+                 consumes = {"application/json"},
+                 produces = {"application/json"})
     public ResponseEntity<Employee> saveEmployee(@Valid @RequestBody Employee e) {
         try {
             Employee emp = service.save(e);
@@ -56,8 +56,8 @@ public class EmployeeRestController {
 
     @PutMapping(
             value = "/update",
-            consumes = {"application/json", "application/xml"},
-            produces = {"application/json", "application/xml"}
+            consumes = {"application/json"},
+            produces = {"application/json"}
     )
     public ResponseEntity<Employee> updateEmployee(@Valid @RequestBody Employee e) {
 
@@ -73,8 +73,8 @@ public class EmployeeRestController {
 
     @PatchMapping(
             value = "/update/{id}",
-            consumes = {"application/json", "application/xml"},
-            produces = {"application/json", "application/xml"}
+            consumes = {"application/json"},
+            produces = {"application/json"}
     )
     public ResponseEntity<Employee> partialUpdate(@PathVariable Integer id, @RequestBody Map<String, Object> map) {
         Employee empFromDB = service.fetchById(id);

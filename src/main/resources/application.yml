@@ -1,6 +1,7 @@
 spring:
   application:
     name: SpringBootEmployeeCRUDRestAPI
+
   main:
     banner-mode: 'off'
   datasource:
@@ -18,3 +19,5 @@ spring:
       ddl-auto: update
 server:
   port: 8082
+
+

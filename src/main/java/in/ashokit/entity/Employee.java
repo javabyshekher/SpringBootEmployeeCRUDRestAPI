@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Employee {
+public class Employee implements java.io.Serializable {
     @Id
 //    @NotNull(message = "empno is required")
     @NotNull(message = "{emp.empno.not.null}")
